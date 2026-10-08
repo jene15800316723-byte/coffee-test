@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>你的豆格是哪一颗？— Cof &amp; Fee 豆格测试</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ============ 开场页 ============ -->
+    <section id="step-start" class="step">
+      <div class="card start-card">
+        <div class="brand">Cof &amp; Fee 咖啡研究所</div>
+        <h1 class="start-title">你的豆格<br>是哪一颗？</h1>
+        <p class="start-lead">如果把你的咖啡偏好变成一颗豆，它会是什么样？</p>
+        <p class="start-sub">完成 5 道选择题，找到你今天的咖啡搭子。<br>没有标准答案，按第一感觉选择即可。</p>
+        <button class="btn btn-primary" id="btn-start">开始测试</button>
+        <p class="disclaimer">本测试用于趣味偏好匹配，不属于心理或人格测验。题目中的水果、巧克力、曲奇等均为风味联想，不表示咖啡添加了这些食材。</p>
+      </div>
+    </section>
+
+    <!-- ============ 选择组号 ============ -->
+    <section id="step-group" class="step hidden">
+      <div class="card">
+        <div class="step-tag">第一步</div>
+        <h2 class="step-title">你所在的小组是？</h2>
+        <p class="step-desc">单选、必填（不计入问卷积分）</p>
+        <div class="options" id="group-options"></div>
+        <div class="nav">
+          <button class="btn btn-ghost" id="btn-group-back">上一步</button>
+          <button class="btn btn-primary" id="btn-group-next" disabled>下一步</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 初始站队 ============ -->
+    <section id="step-team" class="step hidden">
+      <div class="card">
+        <div class="step-tag">第二步</div>
+        <h2 class="step-title">凭第一感觉，你觉得<br>自己是哪种豆格？</h2>
+        <p class="step-desc">单选、必填（不计入问卷积分）</p>
+        <div class="options" id="team-options"></div>
+        <div class="nav">
+          <button class="btn btn-ghost" id="btn-team-back">上一步</button>
+          <button class="btn btn-primary" id="btn-team-next" disabled>开始答题</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 五道测试题 ============ -->
+    <section id="step-quiz" class="step hidden">
+      <div class="card">
+        <div class="quiz-top">
+          <div class="step-tag">测试题</div>
+          <div class="quiz-progress" id="quiz-progress">第 1 / 5 题</div>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+        <h2 class="quiz-title" id="quiz-title"></h2>
+        <div class="options" id="quiz-options"></div>
+        <div class="nav">
+          <button class="btn btn-ghost" id="btn-quiz-back">上一题</button>
+          <button class="btn btn-primary" id="btn-quiz-next" disabled>下一题</button>
+          <button class="btn btn-primary hidden" id="btn-quiz-submit" disabled>查看结果</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 结果页 ============ -->
+    <section id="step-result" class="step hidden">
+      <div class="card result-card">
+        <div class="result-badge" id="result-badge"></div>
+        <h2 class="result-title">你今天的豆格搭子</h2>
+
+        <!-- 豆卡占位区：放入 assets/bean-A.png ~ bean-E.png 后自动替换 -->
+        <div class="bean-card">
+          <div class="bean-card-img" id="bean-card-img">
+            <img id="bean-card-image" src="" alt="" onerror="this.style.display='none'">
+            <span class="bean-card-img-label">豆卡图 · 待替换</span>
+          </div>
+          <div class="bean-card-body">
+            <div class="bean-name" id="bean-name"></div>
+            <div class="bean-persona" id="bean-persona"></div>
+            <div class="bean-flavors" id="bean-flavors"></div>
+            <div class="bean-meta" id="bean-meta"></div>
+          </div>
+        </div>
+
+        <p class="result-text" id="result-text"></p>
+
+        <div class="result-predict" id="result-predict"></div>
+
+        <p class="disclaimer result-note">这是基于本次选择的趣味推荐，实际喜好还需通过冲煮与品尝来确认。</p>
+
+        <button class="btn btn-primary" id="btn-restart">重新测试</button>
+
+        <!-- 第三方表单承接：填写腾讯文档/问卷星链接后，替换下方 href 并取消注释 -->
+        <!-- <a class="btn btn-outline" href="你的表单链接" target="_blank">登记你的结果</a> -->
+      </div>
+    </section>
+
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
